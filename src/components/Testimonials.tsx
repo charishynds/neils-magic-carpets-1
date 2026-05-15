@@ -27,7 +27,7 @@ export default function Testimonials() {
 
   useEffect(() => {
     if (paused) return;
-    timerRef.current = setTimeout(() => go(1), 6000);
+    timerRef.current = setTimeout(() => go(1), 4000);
     return () => clearTimeout(timerRef.current);
   }, [index, paused]);
 
@@ -104,6 +104,9 @@ export default function Testimonials() {
             </div>
           </div>
         </div>
+        <p className="mt-12 text-xs text-gray-400">
+          Testimonials sourced from Google Reviews and Nextdoor.
+        </p>
       </div>
     </section>
   );
