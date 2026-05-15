@@ -28,8 +28,8 @@ export default function Navigation() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled ? "bg-white/95 backdrop-blur-sm border-b border-green/10" : "bg-transparent"
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b ${
+          scrolled ? "bg-white/95 backdrop-blur-sm border-green/10" : "bg-transparent border-transparent"
         }`}
       >
         <div className="container-content flex items-center justify-between h-16 lg:h-20">
