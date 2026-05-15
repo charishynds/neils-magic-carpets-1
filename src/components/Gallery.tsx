@@ -18,10 +18,10 @@ const images = [
   "/gallery/28160a8f-ad59-476a-9189-433eabc4e1d0.JPG",
 ];
 
-type Row = { src: string; flex: string; height: string }[];
+type Row = { src: string; flex: string; height: string; position?: string }[];
 
 const layout: Row[] = [
-  [{ src: images[0], flex: "100%", height: "65vh" }],
+  [{ src: images[0], flex: "100%", height: "65vh", position: "center 35%" }],
   [{ src: images[1], flex: "58.33%", height: "48vh" }, { src: images[2], flex: "41.67%", height: "48vh" }],
   [{ src: images[3], flex: "41.67%", height: "52vh" }, { src: images[4], flex: "58.33%", height: "52vh" }],
   [{ src: images[5], flex: "100%", height: "55vh" }],
@@ -56,7 +56,7 @@ export default function Gallery() {
         {layout.map((row, ri) => (
           <AnimateIn key={ri} delay={ri * 0.05}>
             <div className="flex">
-              {row.map(({ src, flex, height }, ci) => {
+              {row.map(({ src, flex, height, position }, ci) => {
                 const imgIndex = images.indexOf(src);
                 return (
                   <div
@@ -69,6 +69,7 @@ export default function Gallery() {
                       src={src}
                       alt={`Neil's Magic Carpets installation ${imgIndex + 1}`}
                       className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      style={{ objectPosition: position ?? "center" }}
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
