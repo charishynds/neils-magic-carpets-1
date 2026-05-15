@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --green: 150 30% 25%;
+    --green-dark: 150 35% 16%;
+    --green-light: 150 25% 33%;
+    --green-muted: 150 15% 96%;
+    --rose: 338 40% 70%;
+    --rose-light: 338 35% 80%;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: "Inter", system-ui, sans-serif;
+    background: #fff;
+    color: hsl(0 0% 7%);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: "Playfair Display", Georgia, serif;
+  }
+
+  .section-pad {
+    @apply py-24 lg:py-36;
+  }
+
+  .container-content {
+    @apply max-w-content mx-auto px-6 lg:px-10;
+  }
+}
