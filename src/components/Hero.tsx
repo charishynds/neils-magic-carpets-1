@@ -1,7 +1,18 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
 export default function Hero() {
+  const [logoDuration, setLogoDuration] = useState(1.6);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1280px)");
+    const update = (e: MediaQueryList | MediaQueryListEvent) => setLogoDuration(e.matches ? 2.2 : 1.6);
+    update(mq);
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
   const scrollDown = () => {
     const el = document.getElementById("statement");
     if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -17,9 +28,9 @@ export default function Hero() {
 
       <div className="relative z-10 container-content w-full flex flex-col items-start">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          initial={{ opacity: 0, x: -600 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: logoDuration, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
           className="mb-8"
         >
           <img
@@ -33,7 +44,7 @@ export default function Hero() {
           <motion.p
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
             className="text-rose text-xs font-medium tracking-[0.3em] uppercase"
           >
             Carpet &amp; Vinyl Specialists &nbsp;·<br className="sm:hidden" /> London &amp; South East
@@ -44,7 +55,7 @@ export default function Hero() {
           <motion.h1
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.55 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
             className="font-display text-5xl sm:text-6xl lg:text-8xl font-bold text-white leading-[1.05] tracking-tight max-w-2xl"
           >
             Fitted Right.<br />Every Time.
