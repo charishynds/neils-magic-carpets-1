@@ -22,7 +22,8 @@ If an AI assistant is asked to "read the global SOP and follow it", that instruc
 
 1. Read the global SOP first.
 2. Inspect the current repo before asking questions.
-3. Create or update the required repo-local workflow files:
+3. Check that the default branch is named `main`. If it is named `master` or anything else, rename it immediately: run `git branch -m master main`, push `main` to the remote, set the GitHub default branch via `gh repo edit --default-branch main`, and delete the old remote branch via `git push origin --delete master`. Do this before creating any feature branches.
+4. Create or update the required repo-local workflow files:
    - `AGENTS.md`
    - `CLAUDE.md`
    - `AI_INSTRUCTIONS.md`
@@ -31,13 +32,13 @@ If an AI assistant is asked to "read the global SOP and follow it", that instruc
    - `.env.example`
    - `docs/repo-admin-checklist.md`
    - relevant `README.md` workflow/setup/deployment sections
-4. Treat `docs/repo-admin-checklist.md` as the repo's living task, to-do, owner-action, and admin checklist for the full project lifecycle.
-5. When the project owner asks to add something to "the checklist", "tasks", "to-dos", "remaining items", or similar, add it to `docs/repo-admin-checklist.md` unless they clearly name a different file.
-6. Identify project-specific setup gaps and document them.
-7. Ask before running checks.
-8. Ask before any networked, external, GitHub, Vercel, Supabase, DNS, Search Console, deploy, push, merge, branch deletion, dependency install/update, or destructive action.
-9. Do not mark external checks complete unless they were actually run against the correct project/site.
-10. Leave a clear summary of completed setup and remaining owner actions.
+5. Treat `docs/repo-admin-checklist.md` as the repo's living task, to-do, owner-action, and admin checklist for the full project lifecycle.
+6. When the project owner asks to add something to "the checklist", "tasks", "to-dos", "remaining items", or similar, add it to `docs/repo-admin-checklist.md` unless they clearly name a different file.
+7. Identify project-specific setup gaps and document them.
+8. Ask before running checks.
+9. Ask before any networked, external, GitHub, Vercel, Supabase, DNS, Search Console, deploy, push, merge, branch deletion, dependency install/update, or destructive action.
+10. Do not mark external checks complete unless they were actually run against the correct project/site.
+11. Leave a clear summary of completed setup and remaining owner actions.
 
 The project owner should only need to say:
 
