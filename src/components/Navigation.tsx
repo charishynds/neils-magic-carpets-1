@@ -6,7 +6,6 @@ const links = [
   { label: "Work", href: "#gallery" },
   { label: "Services", href: "#services" },
   { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
 ];
 
 export default function Navigation() {
@@ -65,7 +64,7 @@ export default function Navigation() {
                   : "border-white text-white hover:bg-white hover:text-green"
               }`}
             >
-              Get in Touch
+              Contact Neil
             </button>
           </nav>
 
@@ -112,9 +111,9 @@ export default function Navigation() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: links.length * 0.08 + 0.1 }}
                 onClick={() => handleNavClick("#contact")}
-                className="mt-4 text-white border border-white/40 px-8 py-3 text-sm font-medium tracking-wide hover:bg-white hover:text-green transition-colors"
+                className="text-white font-display text-4xl font-medium hover:text-rose transition-colors border-b-2 border-rose pb-1"
               >
-                Get in Touch
+                Contact Neil
               </motion.button>
             </nav>
           </motion.div>

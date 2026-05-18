@@ -7,7 +7,7 @@ const services = [
     description:
       "Personal service carpet installation to the highest standard. From measuring and ordering the carpet through to immaculate fitting - every room, every style.",
     detail: "Domestic & commercial",
-    image: null,
+    image: "/service-carpet.JPG",
   },
   {
     num: "02",
@@ -15,7 +15,7 @@ const services = [
     description:
       "Durable, stylish vinyl flooring expertly laid for any space. Waterproof, practical, and beautifully finished - kitchens, bathrooms, hallways and more.",
     detail: "All room types",
-    image: "/gallery/IMG_4933.JPG",
+    image: "/service-vinyl.jpg",
   },
   {
     num: "03",
@@ -23,7 +23,7 @@ const services = [
     description:
       "From full home transformations to offices, retail spaces, and hospitality environments. We deliver the same exacting finish whatever the scale.",
     detail: "Any size project",
-    image: null,
+    image: "/service-commercial.jpg",
   },
 ];
 

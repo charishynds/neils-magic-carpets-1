@@ -19,6 +19,7 @@ export default function Testimonials() {
   const [direction, setDirection] = useState(1);
   const [paused, setPaused] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
+  const delayRef = useRef(4000);
 
   const go = (dir: number) => {
     setDirection(dir);
@@ -27,7 +28,9 @@ export default function Testimonials() {
 
   useEffect(() => {
     if (paused) return;
-    timerRef.current = setTimeout(() => go(1), 4000);
+    const d = delayRef.current;
+    delayRef.current = 4000;
+    timerRef.current = setTimeout(() => go(1), d);
     return () => clearTimeout(timerRef.current);
   }, [index, paused]);
 
@@ -39,11 +42,7 @@ export default function Testimonials() {
           <h2 className="font-display text-4xl lg:text-5xl font-medium text-gray-900">What customers say</h2>
         </AnimateIn>
 
-        <div
-          className="relative min-h-[260px]"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-        >
+        <div className="relative min-h-[260px]">
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div
               key={index}
@@ -58,6 +57,11 @@ export default function Testimonials() {
               exit="exit"
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               className="max-w-3xl"
+              onPointerEnter={(e) => { if (e.pointerType === 'mouse') setPaused(true); }}
+              onPointerLeave={(e) => { if (e.pointerType === 'mouse') { delayRef.current = 2000; setPaused(false); } }}
+              onPointerDown={(e) => { if (e.pointerType === 'touch') setPaused(true); }}
+              onPointerUp={(e) => { if (e.pointerType === 'touch') { delayRef.current = 2000; setPaused(false); } }}
+              onPointerCancel={(e) => { if (e.pointerType === 'touch') { delayRef.current = 2000; setPaused(false); } }}
             >
               <div className="font-display text-[96px] leading-none text-green/20 select-none -mb-8">&ldquo;</div>
               <p className="font-display text-2xl sm:text-3xl lg:text-4xl font-medium text-gray-800 leading-[1.3]">
@@ -105,7 +109,7 @@ export default function Testimonials() {
           </div>
         </div>
         <p className="mt-12 text-xs text-gray-400">
-          Testimonials sourced from Google Reviews and Nextdoor.
+          Testimonials sourced from <a href="https://share.google/Ch84yuhwzrjyKq90N" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-600 transition-colors">Google Reviews</a> and <a href="https://nextdoor.co.uk/pages/neils-magic-carpets-london-england/" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-600 transition-colors">Nextdoor Reviews</a>.
         </p>
       </div>
     </section>

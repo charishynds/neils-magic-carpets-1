@@ -1,3 +1,5 @@
+import { Instagram } from "lucide-react";
+
 const navLinks = [
   { label: "Work", href: "#gallery" },
   { label: "Services", href: "#services" },
@@ -48,7 +50,7 @@ export default function Footer() {
             <div className="flex flex-col gap-3 text-sm text-white/70">
               <a href="tel:+447984147403" className="hover:text-white transition-colors">+44 (0) 7984 147403</a>
               <a href="mailto:neil@neilsmagiccarpets.co.uk" className="hover:text-white transition-colors">neil@neilsmagiccarpets.co.uk</a>
-              <a href="https://www.instagram.com/neilsmagiccarpets/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">@neilsmagiccarpets</a>
+              <a href="https://www.instagram.com/neilsmagiccarpets/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-1.5"><Instagram size={14} />@neilsmagiccarpets</a>
             </div>
           </div>
         </div>

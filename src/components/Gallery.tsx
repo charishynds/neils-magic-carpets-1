@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, Instagram } from "lucide-react";
 import AnimateIn from "./AnimateIn";
 
 const images = [
@@ -52,10 +52,10 @@ export default function Gallery() {
         </AnimateIn>
       </div>
 
-      <div className="overflow-hidden">
+      <div className="overflow-hidden flex flex-col gap-1 bg-stone-100">
         {layout.map((row, ri) => (
           <AnimateIn key={ri} delay={ri * 0.05}>
-            <div className="flex">
+            <div className="flex gap-1">
               {row.map(({ src, flex, height, position }, ci) => {
                 const imgIndex = images.indexOf(src);
                 return (
@@ -87,9 +87,9 @@ export default function Gallery() {
             href="https://www.instagram.com/neilsmagiccarpets/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-green text-sm font-medium border-b border-green/30 pb-0.5 hover:border-green transition-colors"
+            className="inline-flex items-center gap-2 text-green text-sm font-medium border border-green px-5 py-2.5 hover:bg-green hover:text-white transition-colors"
           >
-            See more on Instagram →
+            <Instagram size={15} />See more on Instagram
           </a>
         </AnimateIn>
       </div>

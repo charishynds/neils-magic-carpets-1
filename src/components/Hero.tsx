@@ -22,7 +22,7 @@ export default function Hero() {
     <section className="relative h-svh min-h-[600px] flex flex-col items-center justify-center overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/hero.JPG')" }}
+        style={{ backgroundImage: "url('/hero-1.jpg')" }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/35 to-black/55" />
 
@@ -45,7 +45,7 @@ export default function Hero() {
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-            className="text-rose text-xs font-medium tracking-[0.3em] uppercase"
+            className="text-rose text-xs font-medium tracking-[0.3em] uppercase [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]"
           >
             Carpet &amp; Vinyl Specialists &nbsp;·<br className="sm:hidden" /> London &amp; South East
           </motion.p>
@@ -58,7 +58,7 @@ export default function Hero() {
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
             className="font-display text-5xl sm:text-6xl lg:text-8xl font-bold text-white leading-[1.05] tracking-tight max-w-2xl"
           >
-            Fitted Right.<br />Every Time.
+            Neil's Magic<br />Carpets
           </motion.h1>
         </div>
 

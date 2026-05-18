@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { MessageCircle, Phone, MapPin, Send, Star, ChevronDown } from "lucide-react";
+import { MessageCircle, Phone, MapPin, Send, Star, ChevronDown, Mail } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { motion, AnimatePresence } from "framer-motion";
@@ -105,7 +105,7 @@ export default function Contact() {
               Forest Hill, London &nbsp;·&nbsp; Serving London &amp; the South East
             </span>
             <span>Free, no-obligation quotes</span>
-            <span className="flex items-center gap-1.5">
+            <span className="flex items-center gap-1.5 lg:basis-full">
                 <div className="flex gap-0.5">
                   {[1,2,3,4,5].map((s) => (
                     <Star key={s} size={12} className={s <= Math.round(displayRating) ? "fill-rose text-rose" : "fill-gray-200 text-gray-200"} />
@@ -133,20 +133,28 @@ export default function Contact() {
           </div>
         </AnimateIn>
 
-        {/* Recessive email option */}
+        {/* Email option */}
         <AnimateIn>
-          <div className="border-t border-gray-100 max-w-xl">
+          <div className="flex items-center gap-3 max-w-xl mt-2 mb-3">
+            <div className="flex-1 h-px bg-gray-200" />
+            <span className="text-xs text-gray-400 uppercase tracking-widest">or</span>
+            <div className="flex-1 h-px bg-gray-200" />
+          </div>
+          <div className="max-w-xl">
             <button
               type="button"
               onClick={() => setShowEmailForm((v) => !v)}
-              className="flex items-center justify-between w-full py-4 text-left group"
+              className="flex items-center justify-between w-full border border-gray-300 hover:border-gray-400 px-5 py-4 text-left group transition-colors"
             >
-              <span className="text-sm text-gray-400 group-hover:text-gray-600 transition-colors">
-                Prefer to send a message instead?
-              </span>
+              <div className="flex items-center gap-3">
+                <Mail size={18} className="text-gray-400 group-hover:text-gray-600 transition-colors" />
+                <span className="text-sm font-medium text-gray-600 group-hover:text-gray-900 transition-colors">
+                  Prefer to send an email instead?
+                </span>
+              </div>
               <ChevronDown
                 size={16}
-                className={`text-gray-300 group-hover:text-gray-500 transition-all duration-200 ${showEmailForm ? "rotate-180" : ""}`}
+                className={`text-gray-400 group-hover:text-gray-600 transition-all duration-200 ${showEmailForm ? "rotate-180" : ""}`}
               />
             </button>
 
