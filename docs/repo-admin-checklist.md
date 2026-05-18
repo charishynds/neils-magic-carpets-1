@@ -67,7 +67,8 @@ Living task, owner-action, and launch checklist for Neil's Magic Carpets (premiu
 
 - [x] Page title and meta description present.
 - [x] Open Graph and Twitter metadata present (Open Graph only — Twitter Card tags still missing).
-- [x] Favicon present.
+- [x] Favicon present (`neils_magic_carpets_favicon.svg`).
+- [ ] Favicon review — confirm the current SVG favicon looks correct in browser tabs and bookmarks on both light and dark OS themes. Update if Neil supplies a new brand asset.
 - [x] `robots.txt` present.
 - [x] `sitemap.xml` present for the confirmed production domain.
 - [x] Canonical URL present.
@@ -79,6 +80,14 @@ Living task, owner-action, and launch checklist for Neil's Magic Carpets (premiu
 - [x] LocalBusiness structured data (Schema.org JSON-LD) added to `index.html` — name, phone, address (Forest Hill SE23), service area, and opening hours.
 - [ ] OG image review — currently `hero.JPG` via production domain URL. Confirm this is the right social share image (ideal 1200×630px). May need a purpose-made card with logo and business name.
 - [ ] Google Business Profile — claim and optimise Neil's listing.
+
+## Social Media
+
+- [ ] **Instagram** — update profile photo, bio, and website link to match the new site. Confirm tone and description are consistent with the new copy.
+- [ ] **Facebook** — update cover photo, profile photo, about text, and website URL. Check that the page category and services listed are accurate.
+- [ ] **Nextdoor** — update business profile photo, description, and website link.
+- [ ] **Google Business Profile** — update photos (interior/exterior/work examples), business description, website URL, and confirm opening hours and service area are correct.
+- [ ] Cross-check all profiles: phone number, service area (London and South East), and branding are consistent across Instagram, Facebook, Nextdoor, and Google.
 
 ## Visual And Functional QA
 
