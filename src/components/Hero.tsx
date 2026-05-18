@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown, Star } from "lucide-react";
+import { useGoogleRating } from "@/hooks/use-google-rating";
 
 export default function Hero() {
   const [logoDuration, setLogoDuration] = useState(1.6);
+  const googleRating = useGoogleRating();
+  const displayRating = googleRating?.rating ?? 5.0;
 
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 1280px)");
@@ -71,10 +74,10 @@ export default function Hero() {
           >
             <div className="flex gap-0.5">
               {[1, 2, 3, 4, 5].map((s) => (
-                <Star key={s} size={14} className="fill-rose text-rose" />
+                <Star key={s} size={14} className={s <= Math.round(displayRating) ? "fill-rose text-rose" : "fill-white/30 text-white/30"} />
               ))}
             </div>
-            <span className="text-white/75 text-xs font-medium tracking-wide">5.0 · Google Reviews</span>
+            <span className="text-white/75 text-xs font-medium tracking-wide">{displayRating.toFixed(1)} · Google Reviews</span>
           </motion.div>
         </div>
       </div>

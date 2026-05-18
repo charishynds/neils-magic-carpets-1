@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { MessageCircle, Phone, MapPin, Send, Star, ChevronDown } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { useGoogleRating } from "@/hooks/use-google-rating";
 import { motion, AnimatePresence } from "framer-motion";
 import AnimateIn from "./AnimateIn";
 
@@ -24,16 +25,10 @@ type FormData = z.infer<typeof schema>;
 export default function Contact() {
   const [submitting, setSubmitting] = useState(false);
   const [showEmailForm, setShowEmailForm] = useState(false);
-  const [googleRating, setGoogleRating] = useState<{ rating: number; total_ratings: number } | null>(null);
+  const googleRating = useGoogleRating();
   const { toast } = useToast();
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm<FormData>({ resolver: zodResolver(schema) });
-
-  useEffect(() => {
-    supabase.functions.invoke("get-google-rating")
-      .then(({ data, error }) => { if (!error && data) setGoogleRating(data); })
-      .catch(() => {});
-  }, []);
 
   const onSubmit = async (data: FormData) => {
     setSubmitting(true);
