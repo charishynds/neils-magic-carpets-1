@@ -27,7 +27,7 @@ Living task, owner-action, and launch checklist for Neil's Magic Carpets (premiu
 - [x] React, Vite, TypeScript, Tailwind CSS, Framer Motion, Supabase, npm, and Vercel stack.
 - [x] Default local preview command is `npm run dev -- --host 0.0.0.0 --port 5173`.
 - [ ] Create a feature/chore branch before the next meaningful change is pushed.
-- [ ] Confirm GitHub repository default branch is `main` in GitHub.
+- [x] GitHub repository default branch confirmed and set to `main`.
 - [ ] Confirm branch protection or review expectations for `main`.
 
 ## Environment Variables
