@@ -35,9 +35,9 @@ Living task, owner-action, and launch checklist for Neil's Magic Carpets (neils-
 - [x] `.env` and `.env.*` are ignored (confirmed in `.gitignore`).
 - [x] `.env.example` is tracked with safe placeholders.
 - [x] Frontend Supabase variable names documented: `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY`.
-- [ ] Confirm Vercel Preview environment variables are configured.
-- [ ] Confirm Vercel Production environment variables are configured.
-- [ ] Confirm Supabase Edge Function secrets are configured for WhatsApp and Google Places when those functions are deployed.
+- [x] Confirm Vercel Preview environment variables are configured.
+- [x] Confirm Vercel Production environment variables are configured.
+- [ ] Confirm Supabase Edge Function secrets are configured for WhatsApp when that function is deployed (Google Places secrets already set).
 
 ## Infrastructure
 
@@ -58,10 +58,10 @@ Living task, owner-action, and launch checklist for Neil's Magic Carpets (neils-
 - [ ] Confirm database constraints match front-end validation (react-hook-form + zod).
 - [x] Google Rating Badge: Google Place ID confirmed — `ChIJxxYBUDOyUGQRPTrKTXzsZls` (verified: 5.0 rating, 9 reviews, phone 07984 147403 matches). Uses Places API (New) — SAB with hidden address, not findable via legacy Places API.
 - [x] Google Rating Badge: Google Cloud project created, Places API (New) enabled, API key generated and restricted to Places API (New) only (server-side use, no application restriction needed).
-- [ ] Google Rating Badge: add `GOOGLE_PLACES_API_KEY` and `GOOGLE_PLACE_ID` (`ChIJxxYBUDOyUGQRPTrKTXzsZls`) as Supabase Edge Function secrets.
+- [x] Google Rating Badge: add `GOOGLE_PLACES_API_KEY` and `GOOGLE_PLACE_ID` (`ChIJxxYBUDOyUGQRPTrKTXzsZls`) as Supabase Edge Function secrets.
 - [x] Google Rating Badge: `get-google-rating` edge function written at `supabase/functions/get-google-rating/index.ts` — uses Places API (New), committed to `feature/google-reviews`.
 - [x] Google Rating Badge: `get-google-rating` deployed to project `fxraygkweckkxkfxfrsh`.
-- [ ] Confirm Preview and Production environments use the intended Supabase project.
+- [x] Confirm Preview and Production environments use the intended Supabase project (`fxraygkweckkxkfxfrsh`).
 
 ## Vercel And Hosting
 
@@ -77,7 +77,8 @@ Living task, owner-action, and launch checklist for Neil's Magic Carpets (neils-
 
 - [x] Page title and meta description present.
 - [x] Open Graph and Twitter metadata present (Open Graph only — Twitter Card tags still missing).
-- [x] Favicon present.
+- [x] Favicon present (`neils_magic_carpets_favicon.svg`).
+- [ ] Favicon review — confirm the current SVG favicon looks correct in browser tabs and bookmarks on both light and dark OS themes. Update if Neil supplies a new brand asset.
 - [x] `robots.txt` present.
 - [x] `sitemap.xml` present for the confirmed production domain.
 - [x] Canonical URL present.
@@ -89,6 +90,14 @@ Living task, owner-action, and launch checklist for Neil's Magic Carpets (neils-
 - [x] LocalBusiness structured data (Schema.org JSON-LD) added to `index.html` — name, phone, address (Forest Hill SE23), service area, and opening hours.
 - [ ] OG image review — currently `hero.JPG` via production domain URL. Confirm this is the right social share image (ideal 1200×630px). May need a purpose-made card with logo and business name.
 - [ ] Google Business Profile — claim and optimise Neil's listing.
+
+## Social Media
+
+- [ ] **Instagram** — update profile photo, bio, and website link to match the new site. Confirm tone and description are consistent with the new copy.
+- [ ] **Facebook** — update cover photo, profile photo, about text, and website URL. Check that the page category and services listed are accurate.
+- [ ] **Nextdoor** — update business profile photo, description, and website link.
+- [ ] **Google Business Profile** — update photos (interior/exterior/work examples), business description, website URL, and confirm opening hours and service area are correct.
+- [ ] Cross-check all profiles: phone number, service area (London and South East), and branding are consistent across Instagram, Facebook, Nextdoor, and Google.
 
 ## Visual And Functional QA
 
