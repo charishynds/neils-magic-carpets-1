@@ -1,6 +1,6 @@
 # Repo Admin Checklist
 
-Living task, owner-action, and launch checklist for Neil's Magic Carpets (premium redesign — neils-magic-carpets-1).
+Living task, owner-action, and launch checklist for Neil's Magic Carpets (neils-magic-carpets).
 
 ## Current Project State
 
@@ -15,12 +15,12 @@ Living task, owner-action, and launch checklist for Neil's Magic Carpets (premiu
 - [x] `robots.txt` present.
 - [x] `sitemap.xml` present.
 - [x] Service area confirmed as London and the South East.
-- [x] Local branch is `main` and `origin` points at `https://github.com/charishynds/neils-magic-carpets-1.git`.
+- [x] Local branch is `main` and `origin` points at `https://github.com/charishynds/neils-magic-carpets.git`.
 - [x] Twitter Card meta tags added to `index.html`.
 - [x] `vercel.json` added with security headers and SPA fallback.
 - [ ] ESLint not fully set up — `lint` script exists in `package.json` but `eslint` is not in devDependencies and no config file is present. Add `eslint` and a config before relying on `npm run lint`.
 - [ ] Local lint, build, and typecheck checks not yet run on this repo. Run and confirm passing before first PR.
-- [x] Supabase project confirmed: create a new project (`neils-magic-carpets-1`) in your existing Supabase org — see Supabase section for next steps.
+- [x] Supabase project confirmed: new project created in your existing Supabase org — see Supabase section for next steps.
 
 ## Development Workflow
 
@@ -49,7 +49,7 @@ Living task, owner-action, and launch checklist for Neil's Magic Carpets (premiu
 
 ## Supabase
 
-- [ ] Create new Supabase project named `neils-magic-carpets-1` in your org via the dashboard. Note the Project Ref, URL, and anon key.
+- [x] Create new Supabase project in your org via the dashboard — done. Note the Project Ref, URL, and anon key for linking.
 - [ ] Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` to Vercel environment variables (Preview + Production).
 - [ ] Link repo to Supabase project: `supabase link --project-ref <ref>`.
 - [ ] Create migrations for the `leads` table (name, email, phone, message, consent, created timestamp) if the contact form stays.
@@ -66,7 +66,7 @@ Living task, owner-action, and launch checklist for Neil's Magic Carpets (premiu
 ## Vercel And Hosting
 
 - [x] `vercel.json` added with security headers (`X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`) and SPA fallback rewrite.
-- [x] Confirm the Vercel project is linked to `https://github.com/charishynds/neils-magic-carpets-1.git`.
+- [x] Confirm the Vercel project is linked to `https://github.com/charishynds/neils-magic-carpets.git`.
 - [x] Confirm Vercel Preview Deployments are enabled for branches and pull requests.
 - [x] Confirm production deploys come from merges to `main` — production branch set to `main` in Vercel Settings → Git.
 - [ ] Confirm the hosting plan permits commercial client use.

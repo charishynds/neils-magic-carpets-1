@@ -4,7 +4,7 @@ This project follows the repo-local operating procedure in `docs/operating-proce
 
 ## Project
 
-Neil's Magic Carpets is a Vite, React, TypeScript, Tailwind CSS, Framer Motion, and Supabase client website deployed through Vercel. This is the premium redesign (neils-magic-carpets-1), rebuilt from scratch with an editorial, whitespace-heavy aesthetic.
+Neil's Magic Carpets is a Vite, React, TypeScript, Tailwind CSS, Framer Motion, and Supabase client website deployed through Vercel. This is the primary site (neils-magic-carpets), rebuilt from scratch with an editorial, whitespace-heavy aesthetic.
 
 ## Required Workflow
 
