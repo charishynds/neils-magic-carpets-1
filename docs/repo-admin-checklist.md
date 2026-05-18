@@ -46,9 +46,10 @@ Living task, owner-action, and launch checklist for Neil's Magic Carpets (premiu
 - [ ] Enable RLS and define anonymous insert plus service-role read policies.
 - [ ] Confirm the production Supabase database has the expected schema and policies before launch.
 - [ ] Confirm database constraints match front-end validation (react-hook-form + zod).
-- [ ] Google Rating Badge: find the Google Place ID for Neil's Magic Carpets, Forest Hill SE23 using the Place ID Finder.
-- [ ] Google Rating Badge: Neil to create or reuse a Google Cloud project with Places API (Legacy) enabled, generate a restricted API key, and share it securely.
-- [ ] Google Rating Badge: once both values are available, add `GOOGLE_PLACES_API_KEY` and `GOOGLE_PLACE_ID` as Supabase Edge Function secrets. No code changes needed until then.
+- [x] Google Rating Badge: Google Place ID confirmed — `ChIJxxYBUDOyUGQRPTrKTXzsZls` (verified: 5.0 rating, 9 reviews, phone 07984 147403 matches). Uses Places API (New) — SAB with hidden address, not findable via legacy Places API.
+- [x] Google Rating Badge: Google Cloud project created, Places API (New) enabled, API key generated and restricted to Places API (New) only (server-side use, no application restriction needed).
+- [ ] Google Rating Badge: add `GOOGLE_PLACES_API_KEY` and `GOOGLE_PLACE_ID` (`ChIJxxYBUDOyUGQRPTrKTXzsZls`) as Supabase Edge Function secrets.
+- [ ] Google Rating Badge: create and deploy `get-google-rating` Supabase edge function (uses Places API (New) — see notes below).
 - [ ] Confirm Preview and Production environments use the intended Supabase project.
 
 ## Vercel And Hosting
