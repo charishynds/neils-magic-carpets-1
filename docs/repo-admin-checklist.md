@@ -56,9 +56,9 @@ Living task, owner-action, and launch checklist for Neil's Magic Carpets (premiu
 ## Vercel And Hosting
 
 - [x] `vercel.json` added with security headers (`X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`) and SPA fallback rewrite.
-- [ ] Confirm the Vercel project is linked to `https://github.com/charishynds/neils-magic-carpets-1.git`.
-- [ ] Confirm Vercel Preview Deployments are enabled for branches and pull requests.
-- [ ] Confirm production deploys come from merges to `main`.
+- [x] Confirm the Vercel project is linked to `https://github.com/charishynds/neils-magic-carpets-1.git`.
+- [x] Confirm Vercel Preview Deployments are enabled for branches and pull requests.
+- [x] Confirm production deploys come from merges to `main` — production branch set to `main` in Vercel Settings → Git.
 - [ ] Confirm the hosting plan permits commercial client use.
 - [ ] Confirm deployed response headers on the Vercel preview URL using securityheaders.com.
 - [ ] Re-confirm deployed response headers on the live production URL after DNS cutover.
