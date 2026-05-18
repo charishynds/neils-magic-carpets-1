@@ -22,8 +22,7 @@ If an AI assistant is asked to "read the global SOP and follow it", that instruc
 
 1. Read the global SOP first.
 2. Inspect the current repo before asking questions.
-3. Check that the default branch is named `main`. If it is named `master` or anything else, rename it immediately: run `git branch -m master main`, push `main` to the remote, set the GitHub default branch via `gh repo edit --default-branch main`, and delete the old remote branch via `git push origin --delete master`. Do this before creating any feature branches.
-4. Create or update the required repo-local workflow files:
+3. Create or update the required repo-local workflow files:
    - `AGENTS.md`
    - `CLAUDE.md`
    - `AI_INSTRUCTIONS.md`
@@ -32,13 +31,12 @@ If an AI assistant is asked to "read the global SOP and follow it", that instruc
    - `.env.example`
    - `docs/repo-admin-checklist.md`
    - relevant `README.md` workflow/setup/deployment sections
-5. Treat `docs/repo-admin-checklist.md` as the repo's living task, to-do, owner-action, and admin checklist for the full project lifecycle.
-6. When the project owner asks to add something to "the checklist", "tasks", "to-dos", "remaining items", or similar, add it to `docs/repo-admin-checklist.md` unless they clearly name a different file.
-7. Identify project-specific setup gaps and document them.
-8. Ask before running checks.
-9. Ask before any networked, external, GitHub, Vercel, Supabase, DNS, Search Console, deploy, push, merge, branch deletion, dependency install/update, or destructive action.
-10. Do not mark external checks complete unless they were actually run against the correct project/site.
-11. Leave a clear summary of completed setup and remaining owner actions.
+4. Treat `docs/repo-admin-checklist.md` as the repo's living task, to-do, owner-action, and admin checklist for the full project lifecycle. Update it as items are completed. If items appear to be missing from the checklist, proactively ask the owner whether to add them.
+5. When the project owner asks to add something to "the checklist", "tasks", "to-dos", "remaining items", or similar, add it to `docs/repo-admin-checklist.md` unless they clearly name a different file.
+6. Identify project-specific setup gaps and document them.
+7. Run local lint and build checks without asking. Ask before anything networked, external, or account-side: GitHub, Vercel, Supabase, DNS, Search Console, analytics, npm install/update/audit, deploy, push, merge, branch deletion, or destructive action.
+9. Do not mark external checks complete unless they were actually run against the correct project/site.
+10. Leave a clear summary of completed setup and remaining owner actions.
 
 The project owner should only need to say:
 
@@ -63,7 +61,7 @@ Do not use Vercel "Promote to Production" as the normal release path. Use it onl
 
 ## Default Lightweight Website Stack
 
-For new lightweight client websites, use this stack unless the project brief says otherwise:
+For new lightweight client websites, use this stack unless the project brief says otherwise, or unless project requirements or best practice clearly calls for different technology:
 
 - React with Vite for the frontend.
 - TypeScript by default; use JavaScript only for very small sites or existing JavaScript projects where TypeScript would add unnecessary migration work.
@@ -112,15 +110,14 @@ Use `http://localhost:5173/` for browser preview unless another port is chosen.
 
 ## Pre-PR Checks
 
-Before pushing or opening a pull request, ask the project owner before running checks. Once approved, run:
+Before pushing or opening a pull request, run these local checks without asking:
 
 ```bash
 npm run lint
 npm run build
-npm audit --omit=dev
 ```
 
-Run `npm audit` as well when dependencies changed or before release, but ask before running it because it may use network access and registry quota.
+Ask before running `npm audit --omit=dev` or `npm audit` — both make network requests to the npm registry. Run `npm audit --omit=dev` before merging, and run the full `npm audit` when dependencies changed or before release.
 
 For visual changes, check:
 
@@ -148,7 +145,7 @@ Ask before running:
 - Any command that sends form submissions, test emails, or data to an external service.
 - Any destructive or hard-to-undo command.
 
-Local checks such as `npm run lint`, `npm run build`, and local browser previews should still be announced first. If the owner has explicitly asked for a review, PR readiness check, or pre-production check, that counts as approval for local lint/build/preview checks only, not for external or account-side actions.
+`npm run lint` and `npm run build` are always safe to run without asking — they are local static checks with no network access or destructive effect. Announce them before running so the owner can see what is happening. Local browser previews are similarly safe to run but should be announced. If the owner has explicitly asked for a review, PR readiness check, or pre-production check, that also counts as approval for local lint/build/preview checks, not for external or account-side actions.
 
 ## Pull Request Checklist
 
@@ -169,7 +166,6 @@ Suggested checklist:
 ## Checks
 - [ ] npm run lint
 - [ ] npm run build
-- [ ] npm run typecheck
 - [ ] npm audit --omit=dev
 - [ ] Vercel preview checked
 - [ ] Mobile viewport checked
@@ -200,6 +196,19 @@ Use this file as the project's living task and owner-action tracker. It should i
 
 When the owner says "add this to the checklist", "add this to tasks", "put this on the to-do list", or similar, update `docs/repo-admin-checklist.md` by default. Keep the checklist current as work is completed, deferred, or discovered.
 
+## Project README
+
+Every project must have a `README.md` at the repo root. Keep it up to date with:
+
+- Project name, brief description, and client or site context.
+- Prerequisites and setup instructions (`npm install`, required Node version, env var requirements).
+- Local development commands.
+- Deployment notes: hosting provider, production branch, how environment variables are managed.
+- Links to key external tools (Vercel project, Supabase project, Sanity Studio, CMS, etc.).
+- Any project-specific gotchas, constraints, or decisions worth documenting.
+
+When setup changes — new dependencies, new env vars, new deployment steps — update the README as part of the same branch, not as a separate follow-up.
+
 ## Vercel Deployment Model
 
 - Branch pushes and pull requests create Preview Deployments.
@@ -218,7 +227,15 @@ For client/commercial sites, confirm the hosting plan permits commercial use.
 
 ## Pre-Production Checklist
 
-Before launch or production merge, ask the project owner which checks they want run now. Do not run external checks, deploy, or change account settings without explicit approval.
+Before launch or production merge, local lint, build, and browser preview checks can proceed without asking. Confirm with the project owner before running any external, networked, or account-side checks. Do not deploy or change account settings without explicit approval.
+
+Code review and cleanup:
+
+- Review all code for redundant, commented-out, or dead code and remove it.
+- Confirm no debug logging, console statements, or development-only code remains.
+- Confirm naming is clear and consistent across components, variables, and files.
+- Confirm code structure and patterns are consistent throughout the project.
+- Ask the AI to do a pre-launch code review if one has not already been done.
 
 Local code and build checks:
 
@@ -235,6 +252,7 @@ Visual and responsive checks:
 - Check tablet or mid-width breakpoint if the layout changes significantly.
 - Confirm no important text clips, overflows, overlaps, or becomes unreadably small.
 - Confirm hero/above-the-fold content is visible without waiting for client-side animation.
+- Confirm the 404/page not found page exists and renders correctly for unknown paths.
 
 Forms and interactive behavior:
 
@@ -245,12 +263,21 @@ Forms and interactive behavior:
 - Confirm any real external submission target only after approval.
 - Confirm backend/database rules match the front end limits.
 
+Accessibility basics:
+
+- Confirm all interactive elements are reachable and operable by keyboard.
+- Confirm focus states are visible on buttons, links, and form inputs.
+- Confirm all meaningful images have descriptive alt text; decorative images have empty alt.
+- Confirm page has a logical heading hierarchy (one `h1`, sensible `h2`/`h3` nesting).
+- Confirm form inputs have associated labels.
+- Confirm text colour contrast meets WCAG AA minimums (4.5:1 for body text, 3:1 for large text and UI components).
+
 Environment and deployment readiness:
 
 - Confirm `.env.example` lists required variables with safe placeholders.
 - Confirm `.env.local` is ignored and not committed.
 - Confirm Vercel or hosting preview and production environment variables are configured.
-- Confirm production branch is `main`.
+- Confirm production branch is `main`. If the default branch is set to something other than `main`, recommend the owner change it. This can be done via `gh repo edit --default-branch main` (ask for approval first, as it is an account-side action). Also advise the owner to update the production branch in Vercel project settings to match, so the change is reflected end to end.
 - Confirm branch/PR previews are enabled.
 - Confirm merge to `main` is the normal production release path.
 
@@ -261,6 +288,7 @@ Security and privacy:
 - Confirm Content Security Policy allows required fonts, analytics, APIs, images, and form endpoints.
 - Confirm no secrets, private keys, or personal data are committed.
 - Confirm form/database permissions, RLS policies, or backend access rules are production-safe.
+- If analytics, advertising, or tracking scripts are present, confirm a cookie consent mechanism is in place and complies with GDPR or applicable regulations.
 
 SEO and launch basics:
 
@@ -284,7 +312,9 @@ External checks to record separately:
 - Production domain points at the intended deployment.
 - HTTPS works.
 - Canonical redirects are correct.
+- All primary navigation links and footer links are checked and resolve correctly with no broken links.
 - Forms send data to the correct destination.
+- Analytics or tracking scripts are confirmed to be firing against the correct property.
 - Security headers confirmed on the Vercel preview URL using securityheaders.com before DNS cutover.
 - Security headers re-confirmed on the live URL using securityheaders.com after DNS cutover.
 - PageSpeed Insights has been checked against both the Vercel preview URL and the live URL.
@@ -298,11 +328,28 @@ AI assistants must:
 - Read this operating procedure before making workflow, Git, deployment, or release decisions.
 - Preserve existing user changes and never reset or revert unrelated work.
 - Prefer branch + pull request for meaningful changes.
-- Ask before running checks, especially external/networked checks, account-side actions, deploys, or destructive commands.
-- Run approved lint/build checks before recommending a merge.
+- Run `npm run lint`, `npm run build`, and local browser previews without asking — announce them first. Ask before any external, networked, account-side, deploy, or destructive action.
+- Run lint and build checks before recommending a merge.
 - Record external checks that require account access rather than pretending they were completed.
-- Keep `docs/repo-admin-checklist.md` current as the living task/to-do tracker when new work, owner actions, or follow-ups are identified.
-- Keep `README.md` and relevant docs up to date when project setup changes.
+- Keep `docs/repo-admin-checklist.md` current: mark items complete as they are done, add new work or follow-ups as they surface, and proactively ask whether to add items that appear to be missing.
+- Ensure every project has a `README.md` that is kept up to date with setup commands, environment variables, hosting configuration, and any project-specific notes. Update it as part of any branch that changes setup or deployment.
+- Draft commit messages using conventional commits format: `type(scope): short description` (e.g. `fix(nav): correct mobile menu close behaviour`). Suggest this whenever committing.
+- When a pull request is ready to open, draft the PR title, summary, and checklist unprompted.
+- After completing a significant piece of work, offer a brief self-review: flag anything that looks like an edge case, a missed accessibility requirement, or a follow-up the owner should know about.
+- When making a non-obvious technical decision or tradeoff, document it in `docs/repo-admin-checklist.md` or the README while the context is fresh. Do not leave it undocumented.
+- After changes that affect project structure, stack, or workflow, proactively update `CLAUDE.md` and `AGENTS.md` so future sessions start with accurate context.
+
+## Getting More From Your AI Assistant
+
+The AI does several things automatically per its instructions above (commit messages, PR descriptions, self-review, decision documentation, CLAUDE.md updates). The following are things the AI will not do unless you ask:
+
+**Accessibility audit**: Ask the AI to audit a specific component or page for keyboard accessibility, ARIA usage, heading structure, and contrast. Useful during development, not just pre-launch.
+
+**SEO and copy review**: Ask the AI to review page copy, meta descriptions, heading text, and image alt text for clarity, consistency, and SEO quality.
+
+**Dependency hygiene**: Ask the AI to check `package.json` for outdated packages or flag anything in `npm audit` output that warrants attention before a release.
+
+**Explaining a past decision**: If you are picking up a project after a gap, ask the AI to summarise what was done, what decisions were made, and what is still outstanding — it can piece this together from the checklist, README, and git history.
 
 ## Reusing This Procedure In Other Projects
 

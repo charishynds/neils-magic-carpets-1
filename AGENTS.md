@@ -12,8 +12,11 @@ Neil's Magic Carpets is a Vite, React, TypeScript, Tailwind CSS, Framer Motion, 
 - Use GitHub Flow: branch from `main`, open a pull request, review the Vercel Preview Deployment, then merge to `main` for production.
 - Keep `docs/repo-admin-checklist.md` current as the living project task list.
 - When the owner asks to add something to the checklist, tasks, to-dos, remaining items, or follow-ups, update `docs/repo-admin-checklist.md` unless another file is named.
-- Ask before running networked, external, account-side, deployment, push, merge, destructive, dependency install/update, or audit actions.
-- Announce local checks before running them. A request for a review or PR-readiness pass counts as approval for local lint/build/preview checks only.
+- Run `npm run lint` and `npm run build` without asking — announce before running. Ask before anything networked, external, account-side, deploy, push, merge, destructive, dependency install/update, or audit action.
+- Draft commit messages using conventional commits format: `type(scope): short description` (e.g. `fix(contact): correct phone validation regex`).
+- When a pull request is ready to open, draft the PR title, summary, and checklist unprompted.
+- After completing a significant piece of work, offer a brief self-review: flag edge cases, missed accessibility requirements, or follow-ups.
+- After changes that affect project structure, stack, or workflow, proactively update `CLAUDE.md` and `AGENTS.md`.
 
 ## Common Commands
 
@@ -29,9 +32,9 @@ Use `http://localhost:5173/` for local preview unless another port is chosen.
 
 ## External Services
 
-- Vercel hosts previews and production.
-- Supabase stores contact form leads (project to be confirmed — see checklist).
-- WhatsApp Cloud API will be used by a `send-whatsapp` Supabase edge function (not yet deployed).
-- Google Places API will be used by a `get-google-rating` Supabase edge function (not yet deployed).
+- Vercel hosts previews and production (project: neils-magic-carpets).
+- Supabase project `fxraygkweckkxkfxfrsh` stores contact form leads and hosts edge functions.
+- `get-google-rating` Supabase edge function is deployed and live — fetches Google rating via Places API (New). Deployed with `--no-verify-jwt` because the `sb_publishable_` key format is not a JWT and would otherwise cause 401s.
+- `send-whatsapp` Supabase edge function is not yet deployed — requires WhatsApp Cloud API credentials.
 
 Do not call, deploy, configure, or inspect these external services without explicit owner approval.
