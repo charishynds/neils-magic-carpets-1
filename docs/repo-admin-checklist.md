@@ -20,7 +20,7 @@ Living task, owner-action, and launch checklist for Neil's Magic Carpets (premiu
 - [x] `vercel.json` added with security headers and SPA fallback.
 - [ ] ESLint not fully set up — `lint` script exists in `package.json` but `eslint` is not in devDependencies and no config file is present. Add `eslint` and a config before relying on `npm run lint`.
 - [ ] Local lint, build, and typecheck checks not yet run on this repo. Run and confirm passing before first PR.
-- [ ] Confirm the Supabase project to use for the new site. The old site used project `fxraygkweckkxkfxfrsh` — confirm whether to reuse or create a new project in the Supabase dashboard.
+- [x] Supabase project confirmed: create a new project (`neils-magic-carpets-1`) in your existing Supabase org — see Supabase section for next steps.
 
 ## Development Workflow
 
@@ -39,9 +39,19 @@ Living task, owner-action, and launch checklist for Neil's Magic Carpets (premiu
 - [ ] Confirm Vercel Production environment variables are configured.
 - [ ] Confirm Supabase Edge Function secrets are configured for WhatsApp and Google Places when those functions are deployed.
 
+## Infrastructure
+
+- [ ] Confirm Vercel account is on Pro plan (required for commercial use — Hobby is personal-only).
+- [x] Supabase: Neil's project and Moxify both sit in your Supabase org — free tier covers both (2 active projects max).
+- [ ] Supabase keep-alive ping: add a Vercel cron (`api/ping.ts` + `vercel.json` crons) to this project once Supabase is live. Prevents free-tier pausing. A `SELECT 1` every 6 days — read-only, no data written, no notifications triggered.
+- [ ] Third client site (future): have that client create their own Supabase org and add you as admin — their free tier is separate from yours. This is standard agency practice, not a ToS workaround.
+- [x] Sanity CMS free tier covers both sites that need it (10,000 docs, 100 GB bandwidth, 20 seats per project). No upgrade needed until those limits are approached.
+
 ## Supabase
 
-- [ ] Confirm which Supabase project to link for this site (new project or reuse existing).
+- [ ] Create new Supabase project named `neils-magic-carpets-1` in your org via the dashboard. Note the Project Ref, URL, and anon key.
+- [ ] Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` to Vercel environment variables (Preview + Production).
+- [ ] Link repo to Supabase project: `supabase link --project-ref <ref>`.
 - [ ] Create migrations for the `leads` table (name, email, phone, message, consent, created timestamp) if the contact form stays.
 - [ ] Enable RLS and define anonymous insert plus service-role read policies.
 - [ ] Confirm the production Supabase database has the expected schema and policies before launch.
