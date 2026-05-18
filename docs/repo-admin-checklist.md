@@ -49,9 +49,9 @@ Living task, owner-action, and launch checklist for Neil's Magic Carpets (neils-
 
 ## Supabase
 
-- [x] Create new Supabase project in your org via the dashboard — done. Note the Project Ref, URL, and anon key for linking.
-- [ ] Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` to Vercel environment variables (Preview + Production).
-- [ ] Link repo to Supabase project: `supabase link --project-ref <ref>`.
+- [x] Create new Supabase project in your org via the dashboard — project ref `fxraygkweckkxkfxfrsh`.
+- [x] Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` to Vercel environment variables (Production and Preview).
+- [x] Link repo to Supabase project: `supabase link --project-ref fxraygkweckkxkfxfrsh`.
 - [ ] Create migrations for the `leads` table (name, email, phone, message, consent, created timestamp) if the contact form stays.
 - [ ] Enable RLS and define anonymous insert plus service-role read policies.
 - [ ] Confirm the production Supabase database has the expected schema and policies before launch.
@@ -60,7 +60,7 @@ Living task, owner-action, and launch checklist for Neil's Magic Carpets (neils-
 - [x] Google Rating Badge: Google Cloud project created, Places API (New) enabled, API key generated and restricted to Places API (New) only (server-side use, no application restriction needed).
 - [ ] Google Rating Badge: add `GOOGLE_PLACES_API_KEY` and `GOOGLE_PLACE_ID` (`ChIJxxYBUDOyUGQRPTrKTXzsZls`) as Supabase Edge Function secrets.
 - [x] Google Rating Badge: `get-google-rating` edge function written at `supabase/functions/get-google-rating/index.ts` — uses Places API (New), committed to `feature/google-reviews`.
-- [ ] Google Rating Badge: deploy `get-google-rating` — link Supabase project first, then `supabase functions deploy get-google-rating`.
+- [x] Google Rating Badge: `get-google-rating` deployed to project `fxraygkweckkxkfxfrsh`.
 - [ ] Confirm Preview and Production environments use the intended Supabase project.
 
 ## Vercel And Hosting
