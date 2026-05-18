@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 
 interface AnimateInProps {
@@ -9,6 +9,12 @@ interface AnimateInProps {
 }
 
 export default function AnimateIn({ children, delay = 0, className, direction = "up" }: AnimateInProps) {
+  const prefersReducedMotion = useReducedMotion();
+
+  if (prefersReducedMotion) {
+    return <div className={className}>{children}</div>;
+  }
+
   const initial =
     direction === "up" ? { opacity: 0, y: 32 }
     : direction === "left" ? { opacity: 0, x: -48 }

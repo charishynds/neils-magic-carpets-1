@@ -13,7 +13,7 @@ export default function Index() {
   return (
     <>
       <Navigation />
-      <main>
+      <main id="main-content">
         <Hero />
         <Statement />
         <Gallery />
