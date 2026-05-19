@@ -13,6 +13,7 @@ Neil's Magic Carpets is a Vite, React, TypeScript, Tailwind CSS, Framer Motion, 
 - Keep `docs/repo-admin-checklist.md` current as the living project task list.
 - When the owner asks to add something to the checklist, tasks, to-dos, remaining items, or follow-ups, update `docs/repo-admin-checklist.md` unless another file is named.
 - Run `npm run lint` and `npm run build` without asking — announce before running. Ask before anything networked, external, account-side, deploy, push, merge, destructive, dependency install/update, or audit action.
+- Before recommending or performing any branch deletion, always run `git branch -r --merged main` to verify which remote branches are actually merged. Never rely on the owner's recollection alone — verify first. Long-lived branches like `feature/client-feedback` may never be "merged" in the traditional sense and must not be deleted.
 - Draft commit messages using conventional commits format: `type(scope): short description` (e.g. `fix(contact): correct phone validation regex`).
 - When a pull request is ready to open, draft the PR title, summary, and checklist unprompted.
 - After completing a significant piece of work, offer a brief self-review: flag edge cases, missed accessibility requirements, or follow-ups.

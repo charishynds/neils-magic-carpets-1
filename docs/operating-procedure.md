@@ -329,6 +329,7 @@ AI assistants must:
 - Preserve existing user changes and never reset or revert unrelated work.
 - Prefer branch + pull request for meaningful changes.
 - Run `npm run lint`, `npm run build`, and local browser previews without asking — announce them first. Ask before any external, networked, account-side, deploy, or destructive action.
+- Before recommending or performing any branch deletion, always run `git branch -r --merged main` to verify which remote branches are actually merged. Never rely on the owner's recollection alone — verify first. Some branches (e.g. long-lived client preview or staging branches) may never be "merged" in the traditional sense and must not be deleted without explicit confirmation of their purpose.
 - Run lint and build checks before recommending a merge.
 - Record external checks that require account access rather than pretending they were completed.
 - Keep `docs/repo-admin-checklist.md` current: mark items complete as they are done, add new work or follow-ups as they surface, and proactively ask whether to add items that appear to be missing.
