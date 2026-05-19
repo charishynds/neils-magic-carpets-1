@@ -1,7 +1,10 @@
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "@/components/ui/toaster";
 import Index from "@/pages/Index";
 import NotFound from "@/pages/NotFound";
+
+const StudioPage = lazy(() => import("@/pages/StudioPage"));
 
 export default function App() {
   return (
@@ -15,6 +18,14 @@ export default function App() {
       <Toaster />
       <Routes>
         <Route path="/" element={<Index />} />
+        <Route
+          path="/studio/*"
+          element={
+            <Suspense fallback={null}>
+              <StudioPage />
+            </Suspense>
+          }
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

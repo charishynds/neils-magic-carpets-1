@@ -55,7 +55,6 @@ export default function Contact() {
     }
   };
 
-
   const inputClass = "w-full border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-green transition-colors";
 
   return (
@@ -106,7 +105,7 @@ export default function Contact() {
                     <Star key={s} size={12} className={s <= Math.round(googleRating.rating) ? "fill-rose text-rose" : "fill-gray-200 text-gray-200"} />
                   ))}
                 </div>
-                {googleRating.rating.toFixed(1)} on Google ({googleRating.total_ratings} reviews)
+                {`${googleRating.rating.toFixed(1)} · Google Reviews`}
               </span>
             )}
           </div>

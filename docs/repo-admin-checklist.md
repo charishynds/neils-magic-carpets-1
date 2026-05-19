@@ -18,8 +18,8 @@ Living task, owner-action, and launch checklist for Neil's Magic Carpets (neils-
 - [x] Local branch is `main` and `origin` points at `https://github.com/charishynds/neils-magic-carpets.git`.
 - [x] Twitter Card meta tags added to `index.html`.
 - [x] `vercel.json` added with security headers and SPA fallback.
-- [ ] ESLint not fully set up — `lint` script exists in `package.json` but `eslint` is not in devDependencies and no config file is present. Add `eslint` and a config before relying on `npm run lint`.
-- [ ] Local lint, build, and typecheck checks not yet run on this repo. Run and confirm passing before first PR.
+- [x] ESLint set up — `eslint`, `typescript-eslint`, `eslint-plugin-react-hooks`, `eslint-plugin-react-refresh`, and `globals` added to devDependencies; `eslint.config.js` created with flat config.
+- [x] Local lint, build, and typecheck all pass clean.
 - [x] Supabase project confirmed: new project created in your existing Supabase org — see Supabase section for next steps.
 
 ## Development Workflow
@@ -50,7 +50,7 @@ Living task, owner-action, and launch checklist for Neil's Magic Carpets (neils-
 ## Supabase
 
 - [x] Create new Supabase project in your org via the dashboard — project ref `fxraygkweckkxkfxfrsh`.
-- [x] Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` to Vercel environment variables (Production and Preview).
+- [x] Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` to Vercel environment variables (Preview + Production).
 - [x] Link repo to Supabase project: `supabase link --project-ref fxraygkweckkxkfxfrsh`.
 - [ ] Create migrations for the `leads` table (name, email, phone, message, consent, created timestamp) if the contact form stays.
 - [ ] Enable RLS and define anonymous insert plus service-role read policies.
@@ -60,7 +60,7 @@ Living task, owner-action, and launch checklist for Neil's Magic Carpets (neils-
 - [x] Google Rating Badge: Google Cloud project created, Places API (New) enabled, API key generated and restricted to Places API (New) only (server-side use, no application restriction needed).
 - [x] Google Rating Badge: add `GOOGLE_PLACES_API_KEY` and `GOOGLE_PLACE_ID` (`ChIJxxYBUDOyUGQRPTrKTXzsZls`) as Supabase Edge Function secrets.
 - [x] Google Rating Badge: `get-google-rating` edge function written at `supabase/functions/get-google-rating/index.ts` — uses Places API (New), committed to `feature/google-reviews`.
-- [x] Google Rating Badge: `get-google-rating` deployed to project `fxraygkweckkxkfxfrsh`.
+- [x] Google Rating Badge: `get-google-rating` deployed to project `fxraygkweckkxkfxfrsh` — secrets set, JWT verification disabled (public endpoint), function live.
 - [x] Confirm Preview and Production environments use the intended Supabase project (`fxraygkweckkxkfxfrsh`).
 
 ## Vercel And Hosting
@@ -144,12 +144,15 @@ Living task, owner-action, and launch checklist for Neil's Magic Carpets (neils-
 
 ## Feature Backlog
 
-- [ ] **Sanity CMS integration** — carried forward from old site plan. Phase 1: install packages, create schemas, set up Studio. Phase 2: populate content (testimonials, services, gallery photos, site settings). Phase 3: migrate components one at a time. First question: does Neil have a Sanity account, or does one need to be created?
+- [x] **Sanity CMS integration — Phase 1 complete**: Sanity project `neils-magic-carpets` (ID `2v78w70t`) created in Moxify org. `sanity` and `@sanity/vision` installed. Studio embedded at `/studio` (lazy-loaded, no main bundle impact). React upgraded to v19. Schemas intentionally empty until content structure is finalised.
+- [ ] **Sanity CMS — Phase 2**: Add schemas (testimonials, services, gallery, site settings) once content structure is confirmed. Then populate content via Studio.
+- [ ] **Sanity CMS — Phase 3**: Migrate components to fetch from Sanity (one at a time). Register production Studio URL in Sanity dashboard once deployed to Vercel.
 - [ ] **Wordmark and logo update** — awaiting new asset files from Neil. Drop-in replacement into `Navigation.tsx` (wordmark) and `Footer.tsx`. Current file names: `/neilsmagiccarpets-logo-black.png` and `/neils_magic_carpets_wordmark_black_white.svg`.
 
 ## Deferred Improvements
 
 - [x] Hero image preload — `<link rel="preload">` added to `index.html` for `hero.JPG` (LCP element).
-- [ ] Image format — convert gallery and hero images from JPG/JPEG to WebP for meaningful load time reduction.
+- [ ] Image audit — review all gallery and hero images: check quality and crop, rename files from UUIDs/device names to descriptive slugs (e.g. `carpet-fitting-lounge.webp`), and confirm none are duplicates or placeholders.
+- [ ] Image format — convert gallery and hero images from JPG/JPEG to WebP for meaningful load time reduction. Do after image audit and rename.
 - [x] Lazy loading — `loading="lazy"` already present on all gallery images in `Gallery.tsx`.
 - [ ] Consider adding a test runner (Vitest) and at minimum smoke tests for the contact form and key components once the codebase stabilises.
